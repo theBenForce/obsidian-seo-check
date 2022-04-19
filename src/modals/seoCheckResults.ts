@@ -1,13 +1,13 @@
 import { App, Modal } from 'obsidian';
 
 export class SeoCheckResults extends Modal {
-	constructor(app: App) {
+	constructor(app: App, private results: Array<any>) {
 		super(app);
 	}
 
 	onOpen() {
 		const {contentEl} = this;
-		contentEl.setText('Woah!');
+		contentEl.innerHTML = this.results.map(r => `<div>${r.text}</div>`).join("\n");
 	}
 
 	onClose() {
